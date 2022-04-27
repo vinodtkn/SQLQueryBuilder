@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class OrderByConditionParameters {
-	private String tableName;
-	private String columnName;
+	private String alias;
+	private String column;
 	private String order;
 
 	/**
@@ -19,57 +19,36 @@ public class OrderByConditionParameters {
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @param tableName
-	 * @param columnName
-	 * @param order
-	 */
-	public OrderByConditionParameters(String tableName, String columnName, String order) {
+	public OrderByConditionParameters(String alias, String column, String order) {
 		super();
-		this.tableName = tableName;
-		this.columnName = columnName;
+		this.alias = alias;
+		this.column = column;
 		this.order = order;
 	}
 
-	/**
-	 * @return the tableName
-	 */
-	public String getTableName() {
-		return tableName;
+	public String getAlias() {
+		return alias;
 	}
 
-	/**
-	 * @param tableName the tableName to set
-	 */
-	public void setTableName(String tableName) {
-		this.tableName = tableName;
+	public void setAlias(String alias) {
+		this.alias = alias;
 	}
 
-	/**
-	 * @return the columnName
-	 */
-	public String getColumnName() {
-		return columnName;
+	public String getColumn() {
+		return column;
 	}
 
-	/**
-	 * @param columnName the columnName to set
-	 */
-	public void setColumnName(String columnName) {
-		this.columnName = columnName;
+	public void setColumn(String column) {
+		this.column = column;
 	}
 
-	/**
-	 * @return the order
-	 */
 	public String getOrder() {
 		return order;
 	}
 
-	/**
-	 * @param order the order to set
-	 */
 	public void setOrder(String order) {
 		this.order = order;
 	}
+
+	
 }

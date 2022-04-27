@@ -8,6 +8,8 @@ public class QueryConstants {
 	public static final String SELECT_PHRASE = "select";
 	public static final String FROM_PHRASE = "from";
 	public static final String WHERE_PHRASE = " where ";
+	public static final String STAR = "*";
+	public static final String AS = "AS";
 	public static final String SINGLE_SPACE = " ";
 	public static final String DOT_OPERATOR = ".";
 	public static final String COMMA_OPERATOR = ",";

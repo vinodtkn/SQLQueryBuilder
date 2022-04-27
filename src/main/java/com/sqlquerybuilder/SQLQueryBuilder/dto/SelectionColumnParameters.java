@@ -5,23 +5,19 @@ import java.util.ArrayList;
 import org.springframework.stereotype.Component;
 
 /**
- * Class to define group by condition parameters
+ * class to define columns to be selected in the query
  */
 @Component
-public class GroupByConditionParameters {
-	
+public class SelectionColumnParameters {
+
 	private String alias;
 	private ArrayList<String> columns;
-	
-	/**
-	 * 
-	 */
-	public GroupByConditionParameters() {
+
+	public SelectionColumnParameters() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-	
-	public GroupByConditionParameters(String alias, ArrayList<String> columns) {
+
+	public SelectionColumnParameters(String alias, ArrayList<String> columns) {
 		super();
 		this.alias = alias;
 		this.columns = columns;

@@ -8,11 +8,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class JoinConditionParameters {
 
-	private String jointype;
-	private String lefttableName;
-	private String leftcolumnName;
-	private String righttableName;
-	private String rightcolumnName;
+	private String joinType;
+	private String primaryTableColumnName;
+	private String secondaryTableAliasName;
+	private String secondaryTableColumnName;
 
 	/**
 	 * 
@@ -22,91 +21,47 @@ public class JoinConditionParameters {
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @param jointype
-	 * @param lefttableName
-	 * @param leftcolumnName
-	 * @param righttableName
-	 * @param rightcolumnName
-	 */
-	public JoinConditionParameters(String jointype, String lefttableName, String leftcolumnName, String righttableName,
-			String rightcolumnName) {
+	public JoinConditionParameters(String joinType, String primaryTableColumnName, String secondaryTableAliasName,
+			String secondaryTableColumnName) {
 		super();
-		this.jointype = jointype;
-		this.lefttableName = lefttableName;
-		this.leftcolumnName = leftcolumnName;
-		this.righttableName = righttableName;
-		this.rightcolumnName = rightcolumnName;
+		this.joinType = joinType;
+		this.primaryTableColumnName = primaryTableColumnName;
+		this.secondaryTableAliasName = secondaryTableAliasName;
+		this.secondaryTableColumnName = secondaryTableColumnName;
 	}
 
-	/**
-	 * @return the jointype
-	 */
-	public String getJointype() {
-		return jointype;
+	public String getJoinType() {
+		return joinType;
 	}
 
-	/**
-	 * @param jointype the jointype to set
-	 */
-	public void setJointype(String jointype) {
-		this.jointype = jointype;
+	public void setJoinType(String joinType) {
+		this.joinType = joinType;
 	}
 
-	/**
-	 * @return the lefttableName
-	 */
-	public String getLefttableName() {
-		return lefttableName;
+	public String getPrimaryTableColumnName() {
+		return primaryTableColumnName;
 	}
 
-	/**
-	 * @param lefttableName the lefttableName to set
-	 */
-	public void setLefttableName(String lefttableName) {
-		this.lefttableName = lefttableName;
+	public void setPrimaryTableColumnName(String primaryTableColumnName) {
+		this.primaryTableColumnName = primaryTableColumnName;
 	}
 
-	/**
-	 * @return the leftcolumnName
-	 */
-	public String getLeftcolumnName() {
-		return leftcolumnName;
+	public String getSecondaryTableAliasName() {
+		return secondaryTableAliasName;
 	}
 
-	/**
-	 * @param leftcolumnName the leftcolumnName to set
-	 */
-	public void setLeftcolumnName(String leftcolumnName) {
-		this.leftcolumnName = leftcolumnName;
+	public void setSecondaryTableAliasName(String secondaryTableAliasName) {
+		this.secondaryTableAliasName = secondaryTableAliasName;
 	}
 
-	/**
-	 * @return the righttableName
-	 */
-	public String getRighttableName() {
-		return righttableName;
+	public String getSecondaryTableColumnName() {
+		return secondaryTableColumnName;
 	}
 
-	/**
-	 * @param righttableName the righttableName to set
-	 */
-	public void setRighttableName(String righttableName) {
-		this.righttableName = righttableName;
+	public void setSecondaryTableColumnName(String secondaryTableColumnName) {
+		this.secondaryTableColumnName = secondaryTableColumnName;
 	}
 
-	/**
-	 * @return the rightcolumnName
-	 */
-	public String getRightcolumnName() {
-		return rightcolumnName;
-	}
-
-	/**
-	 * @param rightcolumnName the rightcolumnName to set
-	 */
-	public void setRightcolumnName(String rightcolumnName) {
-		this.rightcolumnName = rightcolumnName;
-	}
+	
 
 }
