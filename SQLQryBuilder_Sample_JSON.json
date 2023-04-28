@@ -1,0 +1,132 @@
+Input Json:
+-----------
+
+{
+  "queryComponents": {
+    "tableNames": [
+      "table1",
+      "table2"
+    ],
+    "tableAliases": [
+      "t1",
+      "t2"
+    ],
+    "selectionColumns": [
+      {
+        "alias": "t1",
+        "columns": [
+          "column1"
+        ]
+      },
+      {
+        "alias": "t2",
+        "columns": [
+          "column1",
+          "column2"
+        ]
+      }
+    ],
+    "whereConditions": {
+      "conditionAppender": "AND",
+      "conditions": [
+        {
+          "comparingAlias": "t1",
+          "comparingColumn": "column1",
+          "comparingOperator": "EQUAL",
+          "comparingWithColumn": false,
+          "comparingWithValue": true,
+          "comparingWithSubQuery": false,
+          "comparingValue": "Value"
+        },
+        {
+          "comparingAlias": "t2",
+          "comparingColumn": "column1",
+          "comparingOperator": "EQUAL",
+          "comparingWithColumn": true,
+          "comparingWithValue": false,
+          "comparingWithSubQuery": false,
+          "comparableTableAlias": "t2",
+          "comparableColumn": "column1"
+        },
+        {
+          "comparingAlias": "t2",
+          "comparingColumn": "column2",
+          "comparingOperator": "EQUAL",
+          "comparingWithColumn": false,
+          "comparingWithValue": false,
+          "comparingWithSubQuery": true,
+          "subQueryDetails": {
+            "queryComponents": {
+              "tableNames": [
+                "table1"
+              ],
+              "tableAliases": [
+                "t1"
+              ],
+              "selectionColumns": [
+                {
+                  "alias": "t1",
+                  "columns": [
+                    "column1"
+                  ]
+                }
+              ],
+              "whereConditions": {
+                "conditions": [
+                  {
+                    "comparingAlias": "t1",
+                    "comparingColumn": "column1",
+                    "comparingOperator": "EQUAL",
+                    "comparingWithColumn": false,
+                    "comparingWithValue": true,
+                    "comparingWithSubQuery": false,
+                    "comparingValue": "Value"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "joinConditions": [
+      {
+        "joinType": "INNERJOIN",
+        "primaryTableColumnName": "column1",
+        "secondaryTableAliasName": "t2",
+        "secondaryTableColumnName": "column1"
+      }
+    ],
+    "groupByColumns": [
+      {
+        "alias": "t1",
+        "columns": [
+          "column1"
+        ]
+      },
+      {
+        "alias": "t2",
+        "columns": [
+          "column1"
+        ]
+      }
+    ],
+    "orderByConditions": [
+      {
+        "alias": "t1",
+        "column": "column1",
+        "order": "ASC"
+      },
+      {
+        "alias": "t2",
+        "column": "column2",
+        "order": "DESC"
+      }
+    ]
+  }
+}
+
+Output:
+-------
+
+select t1.column1 ,t2.column1 ,t2.column2 from table1 AS t1 INNER JOIN table2 AS t2  on  t1.column1 = t2.column1  where t1.column1="Value" AND t2.column1=t2.column1 AND t2.column2= (select t1.column1 from table1 AS t1 where t1.column1="Value" )  GROUP BY t1.column1 ,t2.column1  ORDER BY t1.column1 ASC,t2.column2 DESC
