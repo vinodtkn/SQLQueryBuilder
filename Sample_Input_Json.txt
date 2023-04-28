@@ -1,0 +1,404 @@
+/select:
+-------
+
+*****
+Query for selecting all columns from a table
+
+{
+  "selectionColumns": [
+    {
+      "tableName": "table1",
+      "columnNames": []
+    }
+  ]
+}
+
+******
+Query for selecting 2 columns from a table
+
+{
+  "selectionColumns": [
+    {
+      "tableName": "table1",
+      "columnNames": ["column1","column2"]
+    }
+  ]
+}
+
+******
+Query for selecting multiple columns from multiple tables
+
+{
+  "selectionColumns": [
+    {
+      "tableName": "table1",
+      "columnNames": ["column1","column2"]
+    },
+    {
+      "tableName": "table2",
+      "columnNames": ["column1","column2"]
+    }
+  ]
+}
+
+*******
+
+/selectwithwhere:
+----------------
+
+********
+
+Query to select 2 columns from a table based on a where condition
+
+{
+  "selectionColumns": [
+    {
+      "tableName": "table1",
+      "columnNames": ["column1","column2"]
+    }
+  ],
+  "whereConditions": [
+      {
+        "lefttableName": "table1",
+        "leftcolumnName": "column1",
+		"operator": "GREATERTHAN",
+		"columnValues": ["value1"],
+		"conditionAppender": ""
+      }]
+}
+
+**********
+
+Query to select 2 columns from a table based on a where condition using "IN" operator
+
+{
+  "selectionColumns": [
+    {
+      "tableName": "table1",
+      "columnNames": ["column1","column2"]
+    }
+  ],
+  "whereConditions": [
+      {
+        "lefttableName": "table1",
+        "leftcolumnName": "column1",
+		"operator": "IN",
+		"columnValues": ["value1", "value2"],
+		"conditionAppender": ""
+      }]
+}
+***********
+Query to select 2 columns from a table based on a where condition using "EQUAL" operator (to equal values between 2 tables)
+{
+  "selectionColumns": [
+    {
+      "tableName": "table1",
+      "columnNames": ["column1","column2"]
+    }
+  ],
+   "whereConditions": [
+      {
+        "lefttableName": "table1",
+        "leftcolumnName": "column1",
+		"operator": "EQUAL",
+		"righttableName": "table2",
+        "rightcolumnName": "column1",
+		"conditionAppender": ""
+      }]
+
+}
+***********
+
+Query to select 2 columns from a table based on multiple where conditions
+
+{
+  "selectionColumns": [
+    {
+      "tableName": "table1",
+      "columnNames": ["column1","column2"]
+    }
+  ],
+  "whereConditions": [
+      {
+        "lefttableName": "table1",
+        "leftcolumnName": "column1",
+		"operator": "IN",
+		"columnValues": ["value1", "value2"],
+		"conditionAppender": "AND"
+      },{
+        "lefttableName": "table1",
+        "leftcolumnName": "column2",
+		"operator": "BETWEEN",
+		"columnValues": ["value3", "value4"],
+		"conditionAppender": ""
+      }]
+}
+
+**********
+
+/selectwithwhereandgroupby
+--------------------------
+
+Query to select 2 columns from a table based on where condition along with group by clause
+
+{
+  "selectionColumns": [
+    {
+      "tableName": "table1",
+      "columnNames": ["column1","column2"]
+    }
+  ],
+  "whereConditions": [
+      {
+        "lefttableName": "table1",
+        "leftcolumnName": "column1",
+		"operator": "IN",
+		"columnValues": ["value1", "value2"],
+		"conditionAppender": ""
+      }],
+       "groupByConditions": [
+    {
+      "tableName": "table1",
+      "columnName": "column1"
+    }
+  ]
+}
+
+**************
+
+/selectwithwhereandorderby
+--------------------------
+
+Query to select 2 columns from a table based on where condition along with ordery by clause
+
+{
+  "selectionColumns": [
+    {
+      "tableName": "table1",
+      "columnNames": ["column1","column2"]
+    }
+  ],
+  "whereConditions": [
+      {
+        "lefttableName": "table1",
+        "leftcolumnName": "column1",
+		"operator": "IN",
+		"columnValues": ["value1", "value2"],
+		"conditionAppender": ""
+      }],
+  "orderByConditions": [
+    {
+      "tableName": "table1",
+      "columnName": "column1",
+      "order": "DESC"
+    }
+	]
+}
+
+***********
+
+/selectwithwheregroupbyandorderby
+---------------------------------
+
+Query to select 2 columns from a table based on where condition along with ordery by clause
+
+{
+  "selectionColumns": [
+    {
+      "tableName": "table1",
+      "columnNames": ["column1","column2"]
+    }
+  ],
+  "whereConditions": [
+      {
+        "lefttableName": "table1",
+        "leftcolumnName": "column1",
+		"operator": "IN",
+		"columnValues": ["value1", "value2"],
+		"conditionAppender": ""
+      }],
+       "groupByConditions": [
+    {
+      "tableName": "table1",
+      "columnName": "column1"
+    }
+  ],
+  "orderByConditions": [
+    {
+      "tableName": "table1",
+      "columnName": "column1",
+      "order": "DESC"
+    }]
+}
+
+************
+
+/selectwithjoin
+---------------
+
+Query for select with single join combination
+
+{
+  "selectionColumns": [
+    {
+      "tableName": "table1",
+      "columnNames": ["column1","column2"]
+    }
+  ],
+   "joinConditions": [
+    {
+      "jointype": "INNER JOIN",
+      "lefttableName": "table1",
+      "leftcolumnName": "column1",
+      "righttableName": "table2",
+      "rightcolumnName": "column1"
+    }]
+}
+
+**************
+
+Query for select wtih multiple join combinations
+
+{
+  "selectionColumns": [
+    {
+      "tableName": "table1",
+      "columnNames": ["column1","column2"]
+    }
+  ],
+   "joinConditions": [
+    {
+      "jointype": "INNER JOIN",
+      "lefttableName": "table1",
+      "leftcolumnName": "column1",
+      "righttableName": "table2",
+      "rightcolumnName": "column1"
+    },
+    {
+      "jointype": "INNER JOIN",
+      "lefttableName": "table1",
+      "leftcolumnName": "column1",
+      "righttableName": "table3",
+      "rightcolumnName": "column1"
+    }]
+}
+
+*************
+
+/selectwithjoinandwhere
+-----------------------
+
+Query for select with Join & where clause combination
+
+{
+  "selectionColumns": [
+    {
+      "tableName": "table1",
+      "columnNames": ["column1","column2"]
+    }
+  ],
+   "joinConditions": [
+    {
+      "jointype": "INNER JOIN",
+      "lefttableName": "table1",
+      "leftcolumnName": "column1",
+      "righttableName": "table2",
+      "rightcolumnName": "column1"
+    }],
+      "whereConditions": [
+      {
+        "lefttableName": "table1",
+        "leftcolumnName": "column1",
+		"operator": "IN",
+		"columnValues": ["value1", "value2"],
+		"conditionAppender": ""
+      }]
+}
+
+***************
+
+/selectwithjoinwhereandgroupby
+------------------------------
+
+Query for select with join & where with group by combination
+
+{
+  "selectionColumns": [
+    {
+      "tableName": "table1",
+      "columnNames": ["column1","column2"]
+    }
+  ],
+   "joinConditions": [
+    {
+      "jointype": "INNER JOIN",
+      "lefttableName": "table1",
+      "leftcolumnName": "column1",
+      "righttableName": "table2",
+      "rightcolumnName": "column1"
+    }],
+      "whereConditions": [
+      {
+        "lefttableName": "table1",
+        "leftcolumnName": "column1",
+		"operator": "IN",
+		"columnValues": ["value1", "value2"],
+		"conditionAppender": ""
+      }],
+       "groupByConditions": [
+    {
+      "tableName": "table1",
+      "columnName": "column1"
+    }
+  ]
+}
+
+******************
+
+/selectwithjoinwheregroupbyandorderby
+-------------------------------------
+
+{
+  "selectionColumns": [
+    {
+      "tableName": "table1",
+      "columnNames": ["column1","column2"]
+    }
+  ],
+   "joinConditions": [
+    {
+      "jointype": "INNER JOIN",
+      "lefttableName": "table1",
+      "leftcolumnName": "column1",
+      "righttableName": "table2",
+      "rightcolumnName": "column1"
+    }],
+      "whereConditions": [
+      {
+        "lefttableName": "table1",
+        "leftcolumnName": "column1",
+		"operator": "IN",
+		"columnValues": ["value1", "value2"],
+		"conditionAppender": ""
+      }],
+       "groupByConditions": [
+    {
+      "tableName": "table1",
+      "columnName": "column1"
+    }
+  ],
+  "orderByConditions": [
+    {
+      "tableName": "table1",
+      "columnName": "column1",
+      "order": "DESC"
+    }]
+}
+
+
+
+
+
+
+
+
